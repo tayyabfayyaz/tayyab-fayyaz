@@ -6,7 +6,7 @@ function HeroSection(){
             <div className="hero-container w-full h-screen bg-zinc-900 block lg:flex">
                 <div className="text-container w-full lg:w-2/4 pl-10 lg:pl-60 pt-20 lg:pt-40 ">
                     <p className="text-lg text-yellow-400 mb-8">Hello Everyone!!</p>
-                    <span className="text-3xl lg:text-5xl text-white">I'm</span>
+                    <span className="text-3xl lg:text-5xl text-white">I am</span>
                     <span className="text-3xl lg:text-5xl text-yellow-400"> Tayyab</span>
                     <p className="text-xl lg:text-3xl text-white">Fayyaz</p>
                     <span className="text-3xl lg:text-5xl text-yellow-400">A freelancer web</span>
