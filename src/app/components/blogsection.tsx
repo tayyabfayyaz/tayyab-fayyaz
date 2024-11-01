@@ -3,17 +3,17 @@ import Image from "next/image";
 function BlogSection(){
     return(
         <main>
-            <div className="blog-container w-full h-fit py-10 px-5 lg:px-0 bg-zinc-900 ">
+            <div className="blog-container w-full h-fit py-10 px-0 lg:px-0 bg-zinc-900 ">
                 <h2 className="text-center text-5xl font-extrabold text-white pt-10 -mb-7">My Blogs</h2>
-                <div className="heading w-full h-20 text-center text-9xl text-white -pt-20 font-extrabold text-opacity-20 -z-10">
+                <div className="heading w-full h-20 text-center text-7xl lg:text-9xl text-white -pt-20 font-extrabold text-opacity-20 -z-10">
                     Blogs
                 </div>
                 <p className="text-xl text-white text-center mt-20">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
 
-                <div className="blog-img-container block px-10 lg:flex justify-around">
-                    <div className="blog-content-1 w-[300px] h-fit py-10 ">
-                        <Image src="/img7.jpg" alt="Blog" width={400} height={400} className="W-[300px] h-[350px] my-5" />
-                        <span className="text-yellow-400 text-lg mx-3 cursor-not-allowed">11-Oct-2023</span>
+                <div className="blog-img-container block px-5 lg:flex justify-around">
+                    <div className="blog-content-1 w-full md:w-[300px] lg:w-[300px] h-fit py-10 ">
+                        <Image src="/img7.jpg" alt="Blog" width={400} height={400} className="w-full md:w-[3000px] h-[350px] my-5" />
+                        <span className="text-yellow-400 text-sm md:text-lg lg:text-lg mr-8 lg:mx-3 cursor-not-allowed">11-Oct-2023</span>
                         <span className="text-yellow-400 text-lg mx-3 cursor-not-allowed">Admin</span>
                         <span className="text-green-400 text-lg mx-3 cursor-not-allowed">Active</span>
                         <p className="text-xl text-white text-center font-bold py-3 cursor-pointer">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
@@ -24,9 +24,9 @@ function BlogSection(){
                         </p>
                     </div>
 
-                    <div className="blog-content-1 w-[300px] h-fit py-10 ">
-                        <Image src="/img8.jpg" alt="Blog" width={400} height={400} className="W-[300px] h-[350px] my-5" />
-                        <span className="text-yellow-400 text-lg mx-3 cursor-not-allowed">11-Oct-2023</span>
+                    <div className="blog-content-1 w-full md:w-[300px] lg:w-[300px] h-fit py-10">
+                        <Image src="/img8.jpg" alt="Blog" width={400} height={400} className="w-full md:w-[300px] lg:w-[250px] h-[350px] my-5" />
+                        <span className="text-yellow-400 text-sm md:text-lg lg:text-lg mr-8 lg:mx-3 cursor-not-allowed">11-Oct-2023</span>
                         <span className="text-yellow-400 text-lg mx-3 cursor-not-allowed">Admin</span>
                         <span className="text-green-400 text-lg mx-3 cursor-not-allowed">Active</span>
                         <p className="text-xl text-white text-center font-bold py-3 cursor-pointer">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
@@ -37,9 +37,9 @@ function BlogSection(){
                         </p>
                     </div>
 
-                    <div className="blog-content-1 w-[300px] h-fit py-10 ">
-                        <Image src="/img9.jpg" alt="Blog" width={400} height={400} className="W-[300px] h-[350px] my-5" />
-                        <span className="text-yellow-400 text-lg mx-3 cursor-not-allowed">11-Oct-2023</span>
+                    <div className="blog-content-1 w-full md:w-[300px] lg:w-[300px] h-fit py-10 mx-0">
+                        <Image src="/img9.jpg" alt="Blog" width={400} height={400} className="w-full md:w-[300px] h-[350px] my-5" />
+                        <span className="text-yellow-400 text-sm md:text-lg lg:text-lg mr-8 lg:mx-3 cursor-not-allowed">11-Oct-2023</span>
                         <span className="text-yellow-400 text-lg mx-3 cursor-not-allowed">Admin</span>
                         <span className="text-green-400 text-lg mx-3 cursor-not-allowed">Active</span>
                         <p className="text-xl text-white text-center font-bold py-3 cursor-pointer">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>

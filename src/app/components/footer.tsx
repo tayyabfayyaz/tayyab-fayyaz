@@ -44,7 +44,7 @@ function Footer(){
                     </ul>
                 </div>
             </footer>
-                <div className="copyright-box flex justify-center items-center bg-black w-full h-[60px] text-white text-lg">
+                <div className="copyright-box flex justify-center items-center bg-black w-full h-[60px] text-white text-sm">
                     <h2 className="flex gap-3"><FaRegCopyright /> All rights reserve bt Tayyab Fayyaz | Design 2024 - 2025</h2>
                 </div>
         </main>
