@@ -1,68 +1,85 @@
-function SkillSection(){
-    return(
-        <main>
-            <div className="skills-container w-full h-fit py-10 px-5 lg:px-0 lg:h-screen bg-zinc-900 ">
-                <h2 className="text-center text-5xl font-extrabold text-white pt-10 -mb-7">My Skill</h2>
-                <div className="heading w-full h-20 text-center text-7xl lg:text-9xl text-white -pt-20 font-extrabold text-opacity-20 -z-10">
-                    Skills
-                </div>
-                <p className="text-xl text-white text-center mt-20">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                <div className="bar-container block lg:flex justify-around lg:mt-10 px-5 w-full">
-                    <div className="skills-bar mt-10 lg:mt-0">
-                        <span className="text-xl text-white text-start mb-3">CSS</span>
-                        <span className="text-xl text-white text-end mb-3 ml-[180px] md:ml-[260px] lg:ml-[340px]">95%</span>
-                        <div className="bar-fill-part w-[250px] md:w-[350px] lg:w-[450px] h-4 bg-gray-600 rounded-lg">
-                            <div className="empty-bar-part w-[230px] md:w-[330px] lg:w-[410px] h-4 bg-yellow-400 rounded-lg"></div>
-                        </div>
-                    </div>
+'use client';
+import { motion } from 'framer-motion';
 
-                    <div className="skills-bar mt-10 lg:mt-0">
-                        <span className="text-xl text-white text-start mb-3">HTML</span>
-                        <span className="text-xl text-white text-end mb-3 ml-[140px] md:ml-[220px] lg:ml-[320px]">90%</span>
-                        <div className="bar-fill-part w-[250px] md:w-[350px] lg:w-[450px] h-4 bg-gray-600 rounded-lg">
-                            <div className="empty-bar-part w-[210px] md:w-[300px] lg:w-[400px] h-4 bg-yellow-400 rounded-lg"></div>
-                        </div>
-                    </div>
-                </div>
+const skills = [
+  { name: 'HTML & CSS', percentage: 95, color: 'bg-yellow-400' },
+  { name: 'TYPESCRIPT', percentage: 90, color: 'bg-yellow-400' },
+  { name: 'JAVASCRIPT', percentage: 80, color: 'bg-yellow-400' },
+  { name: 'PYTHON', percentage: 85, color: 'bg-yellow-400' },
+  { name: 'SEO', percentage: 75, color: 'bg-yellow-400' },
+  { name: 'CMS', percentage: 60, color: 'bg-yellow-400' },
+];
 
-                <div className="bar-container block lg:flex justify-around lg:mt-10 px-5 w-full">
-                    <div className="skills-bar mt-10 lg:mt-0">
-                        <span className="text-xl text-white text-start mb-3">JAVASCRIPT</span>
-                        <span className="text-xl text-white text-end mb-3 ml-[50px] md:ml-[150px] lg:ml-[200px]">80%</span>
-                        <div className="bar-fill-part w-[250px] md:w-[350px] lg:w-[450px] h-4 bg-gray-600 rounded-lg">
-                            <div className="empty-bar-part w-[180px] md:w-[280px] lg:w-[320px] h-4 bg-yellow-400 rounded-lg"></div>
-                        </div>
-                    </div>
+interface SkillItemProps {
+  name: string;
+  percentage: number;
+  color: string;
+}
 
-                    <div className="skills-bar mt-10 lg:mt-0">
-                        <span className="text-xl text-white text-start mb-3">TAILWINDCSS</span>
-                        <span className="text-xl text-white text-end mb-3 ml-[60px] md:ml-[160px] lg:ml-[210px]">85%</span>
-                        <div className="bar-fill-part w-[250px] md:w-[350px] lg:w-[450px] h-4 bg-gray-600 rounded-lg">
-                            <div className="empty-bar-part w-[200px] md:w-[290px] lg:w-[350px] h-4 bg-yellow-400 rounded-lg"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="bar-container block lg:flex justify-around lg:mt-10 px-5 w-full">
-                    <div className="skills-bar mt-10 lg:mt-0">
-                        <span className="text-xl text-white text-start mb-3">SEO</span>
-                        <span className="text-xl text-white text-end mb-3 ml-[120px] md:ml-[180px] lg:ml-[220px]">75%</span>
-                        <div className="bar-fill-part w-[250px] md:w-[350px] lg:w-[450px] h-4 bg-gray-600 rounded-lg">
-                            <div className="empty-bar-part w-[170px] md:w-[230px] lg:w-[280px] h-4 bg-yellow-400 rounded-lg"></div>
-                        </div>
-                    </div>
-
-                    <div className="skills-bar mt-10 lg:mt-0 mb-20 lg:mb-0">
-                        <span className="text-xl text-white text-start mb-3">PHP</span>
-                        <span className="text-xl text-white text-end mb-3 ml-[80px] md:ml-[150px] lg:ml-[190px]">60%</span>
-                        <div className="bar-fill-part w-[250px] md:w-[350px] lg:w-[450px] h-4 bg-gray-600 rounded-lg">
-                            <div className="empty-bar-part w-[140px] md:w-[200px] lg:w-[250px] h-4 bg-yellow-400 rounded-lg"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    );
+const SkillItem = ({ name, percentage, color }: SkillItemProps) => {
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5 }}
+      className="w-full max-w-2xl mb-8"
+    >
+      <div className="flex justify-between mb-2">
+        <span className="text-lg lg:text-xl text-white">{name}</span>
+        <span className="text-lg lg:text-xl text-white">{percentage}%</span>
+      </div>
+      <div className="h-3 bg-gray-600 rounded-full overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${percentage}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+          className={`h-full ${color} rounded-full`}
+        />
+      </div>
+    </motion.div>
+  );
 };
+
+function SkillSection() {
+  return (
+    <section className="w-full min-h-screen bg-zinc-900 py-20 px-5 lg:px-20 relative overflow-hidden">
+      {/* Background Text */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 0.05, y: 0 }}
+        transition={{ duration: 1 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl md:text-9xl font-black text-white text-opacity-5 whitespace-nowrap pointer-events-none"
+      >
+        SKILLS
+      </motion.div>
+
+      <div className="relative z-10">
+        {/* Section Heading */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            My Skills
+          </h2>
+          <p className="text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto">
+            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+          </p>
+        </motion.div>
+
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-12 justify-items-center">
+          {skills.map((skill, index) => (
+            <SkillItem key={index} {...skill} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default SkillSection;

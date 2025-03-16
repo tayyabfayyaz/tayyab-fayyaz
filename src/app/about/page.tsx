@@ -14,7 +14,7 @@ function AboutPage(){
                 <div className="content-box block lg:flex lg:pt-20">
                     <div className="about-img w-full px-5 lg:w-2/4 lg:px-20">
                         <Image 
-                            src="/img1.png" 
+                            src="/tayyab.png" 
                             alt="home" 
                             width={400} 
                             height={400} 

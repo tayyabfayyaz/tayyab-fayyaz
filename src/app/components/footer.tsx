@@ -1,54 +1,164 @@
-import { FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaLongArrowAltRight } from "react-icons/fa";
-import { FaLocationDot, FaPhone, FaRegCopyright } from "react-icons/fa6";
+'use client';
+import { motion } from 'framer-motion';
+import { 
+  FaFacebook, 
+  FaInstagram, 
+  FaLinkedin, 
+  FaGithub, 
+  FaLongArrowAltRight 
+} from "react-icons/fa";
+import { 
+  FaLocationDot, 
+  FaPhone, 
+  FaRegCopyright 
+} from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
+const footerLinks = [
+  { text: "Home", href: "/" },
+  { text: "About", href: "/about" },
+  { text: "Contact", href: "/contact" }
+];
 
+const services = [
+  "Web Designing",
+  "Web Development",
+  "SEO",
+  "Android Development",
+  "UI/UX Design"
+];
 
+const contactInfo = [
+  { icon: <FaLocationDot />, text: "House #17, Sector 35/A, Karachi, Pakistan" },
+  { icon: <FaPhone />, text: "+92 318 2997727" },
+  { icon: <MdEmail />, text: "fayyaztayyab@gmail.com" }
+];
 
-function Footer(){
-    return(
-        <main>
-            <footer className="w-full h-[400px] bg-black text-white hidden md:hidden lg:flex justify-around">
-                <div className="about-part h-fit w-[300px] px-4 pt-10 pb-5">
-                    <h3 className="text-white text-cente text-2xl font-bold mb-3 underline decoration-yellow-400">About</h3>
-                    <p className="mt-12 text-gray-400 text-lg">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <span className="float-start ml-5 mt-10 text-2xl text-gray-400 cursor-pointer"><FaFacebook /></span>
-                    <span className="float-start ml-5 mt-10 text-2xl text-gray-400 cursor-pointer"><FaInstagram /></span>
-                    <span className="float-start ml-5 mt-10 text-2xl text-gray-400 cursor-pointer"><FaLinkedin /></span>
-                    <span className="float-start ml-5 mt-10 text-2xl text-gray-400 cursor-pointer"><FaGithub /></span>
+const socialLinks = [
+  { icon: <FaFacebook />, href: "#" },
+  { icon: <FaInstagram />, href: "#" },
+  { icon: <FaLinkedin />, href: "#" },
+  { icon: <FaGithub />, href: "#" }
+];
+
+function Footer() {
+  return (
+    <footer className="w-full bg-gradient-to-b from-zinc-900 to-black text-white">
+      <div className="container mx-auto px-4 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          {/* About Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-6"
+          >
+            <h3 className="text-2xl font-bold text-yellow-400 mb-4">Tayyab Fayyaz</h3>
+            <p className="text-gray-300 leading-relaxed">
+              Creating digital experiences that combine innovation with seamless functionality.
+            </p>
+            <div className="flex gap-4 mt-4">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="text-2xl text-gray-300 hover:text-yellow-400 transition-colors"
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Quick Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="space-y-4"
+          >
+            <h4 className="text-xl font-semibold text-white mb-4">Quick Links</h4>
+            <ul className="space-y-3">
+              {footerLinks.map((link, index) => (
+                <motion.li
+                  key={index}
+                  whileHover={{ x: 5 }}
+                  className="flex items-center gap-2"
+                >
+                  <FaLongArrowAltRight className="text-yellow-400" />
+                  <a
+                    href={link.href}
+                    className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Services */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="space-y-4"
+          >
+            <h4 className="text-xl font-semibold text-white mb-4">Services</h4>
+            <ul className="space-y-3">
+              {services.map((service, index) => (
+                <motion.li
+                  key={index}
+                  whileHover={{ x: 5 }}
+                  className="flex items-center gap-2"
+                >
+                  <FaLongArrowAltRight className="text-yellow-400" />
+                  <span className="text-gray-300 hover:text-yellow-400 transition-colors cursor-pointer">
+                    {service}
+                  </span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Contact */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="space-y-4"
+          >
+            <h4 className="text-xl font-semibold text-white mb-4">Contact</h4>
+            <address className="not-italic space-y-4">
+              {contactInfo.map((info, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <span className="text-yellow-400 mt-1">{info.icon}</span>
+                  <p className="text-gray-300">{info.text}</p>
                 </div>
-                <div className="links-part h-fit w-[300px] px-4 pt-10 pb-5">
-                    <h3 className="text-white text-cente text-2xl font-bold mb-3 underline decoration-yellow-400">Links</h3>
-                    <ul className="text-lg text-gray-400 mt-12">
-                        <li className="my-2 cursor-pointer flex gap-2"> <FaLongArrowAltRight /> Home</li>
-                        <li className="my-2 cursor-pointer flex gap-2"> <FaLongArrowAltRight /> About</li>
-                        <li className="my-2 cursor-pointer flex gap-2"> <FaLongArrowAltRight /> Contact</li>
-                    </ul>
-                </div>
-                <div className="services-part h-fit w-[300px] px-4 pt-10 pb-5">
-                    <h3 className="text-white text-cente text-2xl font-bold mb-3 underline decoration-yellow-400">Services</h3>
-                    <ul className="text-lg text-gray-400 mt-12">
-                        <li className="my-2 cursor-pointer flex gap-2"> <FaLongArrowAltRight /> Web Designing</li>
-                        <li className="my-2 cursor-pointer flex gap-2"> <FaLongArrowAltRight /> Web Development</li>
-                        <li className="my-2 cursor-pointer flex gap-2"> <FaLongArrowAltRight /> SEO</li>
-                        <li className="my-2 cursor-pointer flex gap-2"> <FaLongArrowAltRight /> Android Development</li>
-                        <li className="my-2 cursor-pointer flex gap-2"> <FaLongArrowAltRight /> More..</li>
-                    </ul>
-                </div>
-                <div className="QnA-part h-fit w-[300px] px-4 pt-10 pb-5">
-                    <h3 className="text-white text-cente text-2xl font-bold mb-3 underline decoration-yellow-400">QnAs</h3>
-                    <ul className="text-lg text-gray-400 mt-12">
-                        <li className="my-2 cursor-pointer flex gap-2"> <FaLocationDot /> House # 17, Sector 35/A, Karachi, Pakistan</li>
-                        <li className="my-2 cursor-pointer flex gap-2"> <FaPhone /> +92 3182997727</li>
-                        <li className="my-2 cursor-pointer flex gap-2"> <MdEmail /> fayyaztayyab@gmail.com</li>
-                    </ul>
-                </div>
-            </footer>
-                <div className="copyright-box flex justify-center items-center bg-black w-full h-[60px] text-white text-sm">
-                    <h2 className="flex gap-3"><FaRegCopyright /> All rights reserve bt Tayyab Fayyaz | Design 2024 - 2025</h2>
-                </div>
-        </main>
-    );
+              ))}
+            </address>
+          </motion.div>
+        </div>
+
+        {/* Copyright */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="border-t border-zinc-700 mt-12 pt-6 text-center"
+        >
+          <div className="flex items-center justify-center gap-2 text-gray-300 text-sm">
+            <FaRegCopyright />
+            <span>{new Date().getFullYear()} Tayyab Fayyaz. All rights reserved</span>
+            <span className="text-yellow-400 mx-2">|</span>
+            <span>Developed with ❤️ by Tayyab</span>
+          </div>
+        </motion.div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

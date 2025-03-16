@@ -1,28 +1,140 @@
-function ContactForm(){
-    return(
-        <main>
-            <form action="" method="get" className="w-full px-5 lg:px-0 h-fit py-10 bg-zinc-900">
-                <h2 className="text-center text-5xl font-extrabold text-white pt-10 -mb-7">Contact Us</h2>
-                <div className="heading w-full h-20 text-center text-7xl lg:text-9xl text-white -pt-20 mb-10 font-extrabold text-opacity-20 -z-10">
-                    Contact
-                </div>
+'use client';
+import { motion } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { Button } from "@/components/ui/button";
+import { 
+  FaUser,
+  FaEnvelope,
+  FaPhoneAlt,
+  FaCommentDots 
+} from "react-icons/fa";
 
-                <label htmlFor="name" className="text-2xl text-white font-bold lg:ml-[380px]">Name</label>
-                <input type="text" name="name" id="name" placeholder="Name" className="block mx-auto mt-3 mb-8 w-full md:w-full lg:w-[600px] h-[40px] px-5 rounded-md text-white bg-transparent border-b-2 border-b-yellow-400 shadow-md shadow-yellow-400" />
+const ContactForm = () => {
+  const { register, handleSubmit } = useForm();
 
-                <label htmlFor="name" className="text-2xl text-white font-bold lg:ml-[380px]">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email" className="block mx-auto mt-3 mb-8 w-full md:w-full lg:w-[600px] h-[40px] px-5 rounded-md text-white bg-transparent border-b-2 border-b-yellow-400 shadow-md shadow-yellow-400" />
+  const onSubmit = (data: Record<string, number>) => {
+    console.log(data);
+    // Add your form submission logic here
+  };
 
-                <label htmlFor="name" className="text-2xl text-white font-bold lg:ml-[380px]">Phone No.</label>
-                <input type="text" name="number" id="number" placeholder="Phone No." className="block mx-auto mt-3 mb-8 w-full md:w-full lg:w-[600px] h-[40px] px-5 rounded-md text-white bg-transparent border-b-2 border-b-yellow-400 shadow-md shadow-yellow-400" />
+  const formVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { staggerChildren: 0.1, delayChildren: 0.3 }
+    }
+  };
 
-                <label htmlFor="message" className="text-2xl text-white font-bold lg:ml-[380px]">Message</label>
-                <textarea name="message" id="message" placeholder="Write Message" className="block mx-auto mt-3 mb-8 w-full md:w-full lg:w-[600px] h-[100px] px-5 rounded-md text-white bg-transparent border-b-2 border-b-yellow-400 shadow-md shadow-yellow-400"></textarea>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 
-                <button type="submit" className="h-10 w-40 bg-yellow-400 text-zinc-900 font-semibold cursor-pointer mt-16 rounded-md border-2 border-zinc-900 block mx-auto">Send</button>
-            </form>
-        </main>
-    );
+  return (
+    <section className="w-full py-20 bg-zinc-900 px-4 lg:px-0 relative overflow-hidden">
+      {/* Background Text */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 0.05, y: 0 }}
+        transition={{ duration: 1 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl md:text-9xl font-black text-white text-opacity-5 whitespace-nowrap pointer-events-none"
+      >
+        CONTACT
+      </motion.div>
+
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            Get in Touch
+          </h2>
+          <p className="text-lg lg:text-xl text-gray-300">
+            Have a question or want to work together Let is connect
+          </p>
+        </motion.div>
+
+        <motion.form
+          onSubmit={handleSubmit(onSubmit)}
+          variants={formVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="space-y-8"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div variants={itemVariants}>
+              <div className="relative">
+                <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-400 text-xl" />
+                <input
+                  {...register("name")}
+                  type="text"
+                  placeholder="Name"
+                  className="w-full pl-12 pr-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/30 transition-all"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <div className="relative">
+                <FaEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-400 text-xl" />
+                <input
+                  {...register("email")}
+                  type="email"
+                  placeholder="Email"
+                  className="w-full pl-12 pr-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/30 transition-all"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="md:col-span-2">
+              <div className="relative">
+                <FaPhoneAlt className="absolute left-4 top-1/2 -translate-y-1/2 text-yellow-400 text-xl" />
+                <input
+                  {...register("phone")}
+                  type="tel"
+                  placeholder="Phone Number"
+                  className="w-full pl-12 pr-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/30 transition-all"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="md:col-span-2">
+              <div className="relative">
+                <FaCommentDots className="absolute left-4 top-6 text-yellow-400 text-xl" />
+                <textarea
+                  {...register("message")}
+                  placeholder="Your Message"
+                  rows={5}
+                  className="w-full pl-12 pr-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/30 transition-all"
+                />
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-center"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                type="submit"
+                className="h-12 px-8 bg-yellow-400 hover:bg-yellow-500 text-zinc-900 font-bold text-lg transition-all"
+              >
+                Send Message
+              </Button>
+            </motion.div>
+          </motion.div>
+        </motion.form>
+      </div>
+    </section>
+  );
 };
 
 export default ContactForm;

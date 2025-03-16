@@ -1,64 +1,129 @@
+'use client';
+import { motion } from 'framer-motion';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
-function ProjectSection(){
-    return(
-        <main>
-            <div className="project-container w-full h-fit py-10 bg-zinc-900 px-3 md:px-10 lg:px-0">
-                <h2 className="text-center text-5xl font-extrabold text-white pt-10 -mb-7">My Projects</h2>
-                <div className="heading w-full h-20 text-center text-6xl md:text-7xl lg:text-9xl text-white -pt-20 font-extrabold text-opacity-20 -z-10">
-                    Projects
-                </div>
-                <p className="text-xl text-white text-center mt-20">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                <div className="project-img-box w-full px-2 lg:px-40">
-                    <div className="project-img w-full h-fit my-10 px-2 lg:py-2 block lg:flex">
-                        <div className="img-box-1 relative mr-5 my-5 lg:my-0">
-                            <Image src="/img2.jpg" alt="Project" width={400} height={400} className="mr-0 lg:mr-5 h-[300px] w-[400px] object-cover" />
-                            <div className="hover-text absolute inset-0 bg-yellow-400 bg-opacity-50 lg:opacity-0 lg:hover:opacity-100 transition-opacity duration-300 py-20">
-                                <p className="text-2xl text-center font-semibold ">Furniture & aplencies</p>
-                                <button className="bg-yellow-400 rounded-md w-40 h-10 block mx-auto my-10 border-2 text-xl font-semibold hover:border-black">Visit</button>
-                            </div>
-                        </div>
-                        
-                        <div className="img-box-2 relative mr-5">
-                            <Image src="/img3.jpg" alt="Project" width={400} height={400} className="mr-0 lg:mr-5 h-[300px] w-[600px] object-cover" />
-                            <div className="hover-text absolute inset-0 bg-yellow-400 bg-opacity-50 lg:opacity-0 lg:hover:opacity-100 transition-opacity duration-300 py-20">
-                                <p className="text-2xl text-center font-semibold ">Real Time Chat Box Web</p>
-                                <button className="bg-yellow-400 rounded-md w-40 h-10 block mx-auto my-10 border-2 text-xl font-semibold hover:border-black">Visit</button>
-                            </div>
-                        </div>
-                    </div>
+const projects = [
+  {
+    title: "Furniture & Appliances",
+    image: "/img2.jpg",
+    description: "E-commerce platform for modern furniture",
+    link: "https://funiro-tayyab.vercel.app/"
+  },
+  {
+    title: "Real-Time Chat Web App",
+    image: "/img3.jpg",
+    description: "Instant messaging solution with WebSocket",
+    link: "#"
+  },
+  {
+    title: "Resume Builder",
+    image: "/img4.jpg",
+    description: "Create professional resumes effortlessly",
+    link: "https://tayyab-resume-builder.vercel.app/"
+  },
+  {
+    title: "Travel Portal",
+    image: "/img5.jpg",
+    description: "Adventure booking platform",
+    link: "#"
+  },
+  {
+    title: "CLI Projects",
+    image: "/img6.jpg",
+    description: "Enterprise resource planning solution",
+    link: "https://github.com/tayyabfayyaz?tab=repositories"
+  }
+];
 
-                    <div className="project-img w-full h-fit lg:my-10 px-2 lg:py-2 block lg:flex">
-                        <div className="img-box-1 relative mr-5 my-5 lg:my-0">
-                            <Image src="/img4.jpg" alt="Project" width={400} height={400} className="mr-0 lg:mr-5 h-[300px] w-[600px] object-cover" />
-                            <div className="hover-text absolute inset-0 bg-yellow-400 bg-opacity-50 lg:opacity-0 lg:hover:opacity-100 transition-opacity duration-300 py-20">
-                                <p className="text-2xl text-center font-semibold ">Android Application</p>
-                                <button className="bg-yellow-400 rounded-md w-40 h-10 block mx-auto my-10 border-2 text-xl font-semibold hover:border-black">Visit</button>
-                            </div>
-                        </div>
-                        
-                        <div className="img-box-2 relative mr-5 my-5 lg:my-0">
-                            <Image src="/img5.jpg" alt="Project" width={400} height={400} className="mr-0 lg:mr-5 h-[300px] w-[300px] object-cover" />
-                            <div className="hover-text absolute inset-0 bg-yellow-400 bg-opacity-50 lg:opacity-0 lg:hover:opacity-100 transition-opacity duration-300 py-20">
-                                <p className="text-2xl text-center font-semibold ">Traveling Website</p>
-                                <button className="bg-yellow-400 rounded-md w-40 h-10 block mx-auto my-10 border-2 text-xl font-semibold hover:border-black">Visit</button>
-                            </div>
-                        </div>
-                    </div>
+interface Project {
+  title: string;
+  image: string;
+  description: string;
+  link: string;
+}
 
-                    <div className="project-img w-full h-fit my-10 px-2 lg:py-2 block lg:flex">
-                        <div className="img-box-1 relative mr-5">
-                            <Image src="/img6.jpg" alt="Project" width={400} height={400} className="mr-0 lg:mr-5 h-[300px] w-[900px] object-cover" />
-                            <div className="hover-text absolute inset-0 bg-yellow-400 bg-opacity-50 lg:opacity-0 lg:hover:opacity-100 transition-opacity duration-300 py-20">
-                                <p className="text-2xl text-center font-semibold ">Complete Office Management System</p>
-                                <button className="bg-yellow-400 rounded-md w-40 h-10 block mx-auto my-10 border-2 text-xl font-semibold hover:border-black">Visit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    );
+const ProjectCard = ({ project }: { project: Project }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.6 }}
+    className="group relative h-[400px] overflow-hidden rounded-xl"
+  >
+    <Image
+      src={project.image}
+      alt={project.title}
+      fill
+      className="object-cover transition-all duration-500 group-hover:scale-105"
+    />
+    
+    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/90 to-transparent" />
+    
+    <div className="absolute bottom-0 left-0 right-0 p-6 transition-all duration-300 translate-y-10 group-hover:translate-y-0">
+      <Card className="bg-zinc-900/80 backdrop-blur-sm border-zinc-700">
+        <CardHeader>
+          <CardTitle className="text-yellow-400">{project.title}</CardTitle>
+          <CardDescription className="text-zinc-300">
+            {project.description}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button
+            variant="outline"
+            className="border-yellow-400 text-yellow-400 hover:bg-yellow-400/10"
+            asChild
+          >
+            <a href={project.link} target="_blank" rel="noopener noreferrer">
+              View Project <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
+  </motion.div>
+);
+
+function ProjectSection() {
+  return (
+    <section className="w-full min-h-screen bg-zinc-900 py-20 px-4 lg:px-20 relative overflow-hidden">
+      {/* Background Text */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 0.05, y: 0 }}
+        transition={{ duration: 1 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl md:text-9xl font-black text-white text-opacity-5 whitespace-nowrap pointer-events-none"
+      >
+        PROJECTS
+      </motion.div>
+
+      <div className="relative z-10 container">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            Featured Work
+          </h2>
+          <p className="text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto">
+            Explore my technical expertise through these highlighted digital solutions
+          </p>
+        </motion.div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} project={project} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default ProjectSection;
