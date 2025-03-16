@@ -1,13 +1,9 @@
 [build]
   command = "npm run build"
-  publish = "out"
+  publish = "out"   # For static export
 
 [functions]
   node_bundler = "esbuild"
 
 [build.environment]
   NODE_VERSION = "20.0.0"
-
-"scripts": {
-  "build": "next build && next export"
-}
